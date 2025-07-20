@@ -375,8 +375,7 @@ Covenant University, Ota, Nigeria
 Etfash Environmental Services Limited  
 
 📧 Email: emmanuel.fashagba@etfashservices.com  
-🔗 GitHub: [Your GitHub Profile]  
-🔗 ORCID: [Your ORCID if available]
+
 
 ## Version History
 
