@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phylogenetic Tree Viewer</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/veg/phylotree.js@master/phylotree.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/veg/phylotree.js@master/phylotree.css">
+</head>
+<body>
+    <h1>Phylogenetic Tree</h1>
+    <svg id="tree_display" width="800" height="600"></svg>
+    <input type="file" id="fileInput" accept=".treefile,.nwk,.tree">
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var tree = d3.layout.phylotree()
+                    .svg(d3.select("#tree_display"))
+                    .options({
+                        'show-bootstrap': true,
+                        'left-right-spacing': 'fit-to-size',
+                        'top-bottom-spacing': 'fit-to-size'
+                    });
+                tree(d3_phylotree_newick_parser(e.target.result))
+                    .layout();
+            };
+            reader.readAsText(file);
+        });
+    </script>
+</body>
+</html>
